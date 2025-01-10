@@ -1,20 +1,24 @@
 pipeline{
     agent any
-
     stages{
-        stage('Install Dependencies') {
-            steps {
+        stage('Clone the repository'){
+            steps{
+                git branch: 'main', url: 'https://github.com/Shahab-Ali-E/nodejs.git'
+            }
+        },
+        stage('Build the project'){
+            steps{
                 sh 'npm install'
             }
-        }
-        stage('Run Tests') {
-            steps {
-                echo 'runing test...'
+        },
+        stage('Test the project'){
+            steps{
+                echo 'Testing the project'
             }
-        }
-        stage('Run Server') {
-            steps {
-                sh 'node server.js'
+        },
+        stage('Deploy the project'){
+            steps{
+                echo 'Deploying the project'
             }
         }
     }
